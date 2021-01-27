@@ -1,5 +1,6 @@
 const fs = require('fs')
 const zlib = require('zlib')
+const EventEmitter = require('events')
 
 const EncryptionService = require('../services/EncryptionService.class')
 const databaseService = require('../services/database.service')
@@ -64,6 +65,7 @@ class ProtocolHandler {
     this.currentlyOnScan = false
     this.buffer = []
     this.bufferTimeout = null
+    this.sseData = {}
   }
 
   async connect() {
@@ -71,6 +73,18 @@ class ProtocolHandler {
     const databasePath = `${this.engineConfig.caching.cacheFolder}/${id}.db`
     this.southDatabase = await databaseService.createConfigDatabase(databasePath)
     this.logger.info(`Data source ${name} started with protocol ${protocol}`)
+    if (!this.engine.eventEmitters[`/south/${dataSourceId}/sse`]) {
+      this.engine.eventEmitters[`/south/${dataSourceId}/sse`] = {}
+      this.engine.eventEmitters[`/south/${dataSourceId}/sse`].events = new EventEmitter()
+      this.engine.eventEmitters[`/south/${dataSourceId}/sse`].events.setMaxListeners(0)
+      this.engine.eventEmitters[`/south/${dataSourceId}/sse`].events.on('data', this.listener)
+    }
+  }
+
+  listener = (data) => {
+    if (data) this.sseData = data
+    console.log(`/south/${this.dataSource.dataSourceId}/sse data:`, this.sseData)
+    this.engine.eventEmitters[`/south/${this.dataSource.dataSourceId}/sse`].stream?.write(`data: ${JSON.stringify(this.sseData)}\n\n`)
   }
 
   onScanImplementation(scanMode) {
@@ -102,6 +116,7 @@ class ProtocolHandler {
   disconnect() {
     const { name } = this.dataSource
     this.logger.info(`Data source ${name} disconnected`)
+    this.engine.eventEmitters[`/south/${dataSourceId}/sse`].events.off('data', this.listener)
   }
 
   /**
