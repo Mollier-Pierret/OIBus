@@ -64,6 +64,8 @@ class ProtocolHandler {
     this.currentlyOnScan = false
     this.buffer = []
     this.bufferTimeout = null
+    this.bufferMax = dataSource[dataSource.protocol].bufferMax || BUFFER_MAX
+    this.bufferTimeoutInterval = dataSource[dataSource.protocol].bufferTimeoutInterval || BUFFER_TIME
   }
 
   async connect() {
@@ -135,12 +137,12 @@ class ProtocolHandler {
     // if the protocol buffer is large enough, send it
     // else start a timer before sending it
     this.logger.silly(`${this.buffer.length}, ${!!this.bufferTimeout}, ${this.dataSource.name}`)
-    if (this.buffer.length > BUFFER_MAX) {
+    if (this.buffer.length > this.bufferMax) {
       await this.flush('max-flush')
     } else if (this.bufferTimeout === null) {
       this.bufferTimeout = setTimeout(async () => {
         await this.flush()
-      }, BUFFER_TIME)
+      }, this.bufferTimeoutInterval)
     }
   }
 
