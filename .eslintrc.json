@@ -60,6 +60,7 @@
       {
         "forbid": ["any", "array"]
       }
-    ]
+    ],
+    "react/destructuring-assignment": ["off"]
   }
 }
