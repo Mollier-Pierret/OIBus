@@ -9,7 +9,7 @@ exports[`NewApplicationRow check NewApplicationRow 1`] = `
       class="row"
     >
       <div
-        class="col-md-5"
+        class="col-md-7"
       >
         <div
           class="form-group"
@@ -18,11 +18,11 @@ exports[`NewApplicationRow check NewApplicationRow 1`] = `
             class=""
             for="name"
           >
-            New Application Name
+            Application Name
           </label>
           <input
-            aria-invalid="false"
-            class="oi-form-input form-control"
+            aria-invalid="true"
+            class="oi-form-input is-invalid form-control"
             id="name"
             name="name"
             type="text"
@@ -30,11 +30,13 @@ exports[`NewApplicationRow check NewApplicationRow 1`] = `
           />
           <div
             class="invalid-feedback"
-          />
+          >
+            1
+          </div>
         </div>
       </div>
       <div
-        class="col-md-3"
+        class="col-md-5"
       >
         <div
           class="form-group"
@@ -72,16 +74,17 @@ exports[`NewApplicationRow check NewApplicationRow 1`] = `
           />
         </div>
       </div>
-      <div
-        class="col-md-3"
+    </div>
+    <br />
+    <div
+      class="col-md-2"
+    >
+      <button
+        class="oi-add-button btn btn-primary btn-sm"
+        type="button"
       >
-        <button
-          class="oi-add-button btn btn-primary btn-sm"
-          type="button"
-        >
-          Add
-        </button>
-      </div>
+        Add
+      </button>
     </div>
   </form>
 </div>
@@ -96,7 +99,7 @@ exports[`NewApplicationRow check add press 1`] = `
       class="row"
     >
       <div
-        class="col-md-5"
+        class="col-md-7"
       >
         <div
           class="form-group"
@@ -105,11 +108,11 @@ exports[`NewApplicationRow check add press 1`] = `
             class=""
             for="name"
           >
-            New Application Name
+            Application Name
           </label>
           <input
-            aria-invalid="false"
-            class="oi-form-input form-control"
+            aria-invalid="true"
+            class="oi-form-input is-invalid form-control"
             id="name"
             name="name"
             type="text"
@@ -117,11 +120,13 @@ exports[`NewApplicationRow check add press 1`] = `
           />
           <div
             class="invalid-feedback"
-          />
+          >
+            0
+          </div>
         </div>
       </div>
       <div
-        class="col-md-3"
+        class="col-md-5"
       >
         <div
           class="form-group"
@@ -159,16 +164,17 @@ exports[`NewApplicationRow check add press 1`] = `
           />
         </div>
       </div>
-      <div
-        class="col-md-3"
+    </div>
+    <br />
+    <div
+      class="col-md-2"
+    >
+      <button
+        class="oi-add-button btn btn-primary btn-sm"
+        type="button"
       >
-        <button
-          class="oi-add-button btn btn-primary btn-sm"
-          type="button"
-        >
-          Add
-        </button>
-      </div>
+        Add
+      </button>
     </div>
   </form>
 </div>
@@ -183,7 +189,7 @@ exports[`NewApplicationRow check add pressed with empty application name 1`] = `
       class="row"
     >
       <div
-        class="col-md-5"
+        class="col-md-7"
       >
         <div
           class="form-group"
@@ -192,11 +198,11 @@ exports[`NewApplicationRow check add pressed with empty application name 1`] = `
             class=""
             for="name"
           >
-            New Application Name
+            Application Name
           </label>
           <input
-            aria-invalid="false"
-            class="oi-form-input form-control"
+            aria-invalid="true"
+            class="oi-form-input is-invalid form-control"
             id="name"
             name="name"
             type="text"
@@ -204,11 +210,13 @@ exports[`NewApplicationRow check add pressed with empty application name 1`] = `
           />
           <div
             class="invalid-feedback"
-          />
+          >
+            1
+          </div>
         </div>
       </div>
       <div
-        class="col-md-3"
+        class="col-md-5"
       >
         <div
           class="form-group"
@@ -246,16 +254,17 @@ exports[`NewApplicationRow check add pressed with empty application name 1`] = `
           />
         </div>
       </div>
-      <div
-        class="col-md-3"
+    </div>
+    <br />
+    <div
+      class="col-md-2"
+    >
+      <button
+        class="oi-add-button btn btn-primary btn-sm"
+        type="button"
       >
-        <button
-          class="oi-add-button btn btn-primary btn-sm"
-          type="button"
-        >
-          Add
-        </button>
-      </div>
+        Add
+      </button>
     </div>
   </form>
 </div>
@@ -270,7 +279,7 @@ exports[`NewApplicationRow check change api 1`] = `
       class="row"
     >
       <div
-        class="col-md-5"
+        class="col-md-7"
       >
         <div
           class="form-group"
@@ -279,11 +288,11 @@ exports[`NewApplicationRow check change api 1`] = `
             class=""
             for="name"
           >
-            New Application Name
+            Application Name
           </label>
           <input
-            aria-invalid="false"
-            class="oi-form-input form-control"
+            aria-invalid="true"
+            class="oi-form-input is-invalid form-control"
             id="name"
             name="name"
             type="text"
@@ -291,11 +300,13 @@ exports[`NewApplicationRow check change api 1`] = `
           />
           <div
             class="invalid-feedback"
-          />
+          >
+            1
+          </div>
         </div>
       </div>
       <div
-        class="col-md-3"
+        class="col-md-5"
       >
         <div
           class="form-group"
@@ -333,16 +344,17 @@ exports[`NewApplicationRow check change api 1`] = `
           />
         </div>
       </div>
-      <div
-        class="col-md-3"
+    </div>
+    <br />
+    <div
+      class="col-md-2"
+    >
+      <button
+        class="oi-add-button btn btn-primary btn-sm"
+        type="button"
       >
-        <button
-          class="oi-add-button btn btn-primary btn-sm"
-          type="button"
-        >
-          Add
-        </button>
-      </div>
+        Add
+      </button>
     </div>
   </form>
 </div>
@@ -357,7 +369,7 @@ exports[`NewApplicationRow check change application name 1`] = `
       class="row"
     >
       <div
-        class="col-md-5"
+        class="col-md-7"
       >
         <div
           class="form-group"
@@ -366,11 +378,11 @@ exports[`NewApplicationRow check change application name 1`] = `
             class=""
             for="name"
           >
-            New Application Name
+            Application Name
           </label>
           <input
-            aria-invalid="false"
-            class="oi-form-input form-control"
+            aria-invalid="true"
+            class="oi-form-input is-invalid form-control"
             id="name"
             name="name"
             type="text"
@@ -378,11 +390,13 @@ exports[`NewApplicationRow check change application name 1`] = `
           />
           <div
             class="invalid-feedback"
-          />
+          >
+            1
+          </div>
         </div>
       </div>
       <div
-        class="col-md-3"
+        class="col-md-5"
       >
         <div
           class="form-group"
@@ -420,16 +434,17 @@ exports[`NewApplicationRow check change application name 1`] = `
           />
         </div>
       </div>
-      <div
-        class="col-md-3"
+    </div>
+    <br />
+    <div
+      class="col-md-2"
+    >
+      <button
+        class="oi-add-button btn btn-primary btn-sm"
+        type="button"
       >
-        <button
-          class="oi-add-button btn btn-primary btn-sm"
-          type="button"
-        >
-          Add
-        </button>
-      </div>
+        Add
+      </button>
     </div>
   </form>
 </div>

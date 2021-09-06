@@ -51,6 +51,7 @@ describe('NewApplicationRow', () => {
         <NewApplicationRow
           apiList={testConfig.apiList}
           addApplication={() => (1)}
+          valid={() => (1)}
         />, container,
       )
     })
@@ -63,6 +64,7 @@ describe('NewApplicationRow', () => {
         <NewApplicationRow
           apiList={testConfig.apiList}
           addApplication={addApplication}
+          valid={() => (1)}
         />, container,
       )
     })
@@ -76,6 +78,7 @@ describe('NewApplicationRow', () => {
         <NewApplicationRow
           apiList={testConfig.apiList}
           addApplication={() => (1)}
+          valid={() => (1)}
         />, container,
       )
     })
@@ -89,6 +92,7 @@ describe('NewApplicationRow', () => {
         <NewApplicationRow
           apiList={testConfig.apiList}
           addApplication={() => (1)}
+          valid={() => (1)}
         />, container,
       )
     })
@@ -103,6 +107,7 @@ describe('NewApplicationRow', () => {
         <NewApplicationRow
           apiList={testConfig.apiList}
           addApplication={addApplication}
+          valid={() => (0)}
         />, container,
       )
     })

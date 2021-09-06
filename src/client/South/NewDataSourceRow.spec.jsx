@@ -51,6 +51,7 @@ describe('NewDataSourceRow', () => {
         <NewDataSourceRow
           protocolList={testConfig.protocolList}
           addDataSource={() => (1)}
+          valid={() => (1)}
         />, container,
       )
     })
@@ -63,6 +64,7 @@ describe('NewDataSourceRow', () => {
         <NewDataSourceRow
           protocolList={testConfig.protocolList}
           addDataSource={addDataSource}
+          valid={() => (1)}
         />, container,
       )
     })
@@ -76,6 +78,7 @@ describe('NewDataSourceRow', () => {
         <NewDataSourceRow
           protocolList={testConfig.protocolList}
           addDataSource={() => (1)}
+          valid={() => (1)}
         />, container,
       )
     })
@@ -88,7 +91,8 @@ describe('NewDataSourceRow', () => {
       ReactDOM.render(
         <NewDataSourceRow
           protocolList={testConfig.protocolList}
-          addDataSource={() => (1)}
+          dataSourceList={testConfig.protocolList}
+          valid={() => (1)}
         />, container,
       )
     })
@@ -103,6 +107,7 @@ describe('NewDataSourceRow', () => {
         <NewDataSourceRow
           protocolList={testConfig.protocolList}
           addDataSource={addDataSource}
+          valid={() => (0)}
         />, container,
       )
     })

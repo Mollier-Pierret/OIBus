@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewSouth display NewSouth page based on config 1`] = `
+<div>
+  <button
+    class="inline-button autosize oi-south-button btn btn-outline-secondary btn-sm"
+    id="add-south"
+  >
+    + South
+  </button>
+</div>
+`;

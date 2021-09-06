@@ -9,7 +9,7 @@ exports[`NewDataSourceRow check NewDataSourceRow 1`] = `
       class="row"
     >
       <div
-        class="col-md-5"
+        class="col-md-7"
       >
         <div
           class="form-group"
@@ -21,8 +21,8 @@ exports[`NewDataSourceRow check NewDataSourceRow 1`] = `
             New DataSource Name
           </label>
           <input
-            aria-invalid="false"
-            class="oi-form-input form-control"
+            aria-invalid="true"
+            class="oi-form-input is-invalid form-control"
             id="name"
             name="name"
             type="text"
@@ -30,11 +30,13 @@ exports[`NewDataSourceRow check NewDataSourceRow 1`] = `
           />
           <div
             class="invalid-feedback"
-          />
+          >
+            1
+          </div>
         </div>
       </div>
       <div
-        class="col-md-3"
+        class="col-md-5"
       >
         <div
           class="form-group"
@@ -92,16 +94,17 @@ exports[`NewDataSourceRow check NewDataSourceRow 1`] = `
           />
         </div>
       </div>
-      <div
-        class="col-md-3"
+    </div>
+    <br />
+    <div
+      class="col-md-2"
+    >
+      <button
+        class="oi-add-button btn btn-primary btn-sm"
+        type="button"
       >
-        <button
-          class="oi-add-button btn btn-primary btn-sm"
-          type="button"
-        >
-          Add
-        </button>
-      </div>
+        Add
+      </button>
     </div>
   </form>
 </div>
@@ -116,7 +119,7 @@ exports[`NewDataSourceRow check add press 1`] = `
       class="row"
     >
       <div
-        class="col-md-5"
+        class="col-md-7"
       >
         <div
           class="form-group"
@@ -128,8 +131,8 @@ exports[`NewDataSourceRow check add press 1`] = `
             New DataSource Name
           </label>
           <input
-            aria-invalid="false"
-            class="oi-form-input form-control"
+            aria-invalid="true"
+            class="oi-form-input is-invalid form-control"
             id="name"
             name="name"
             type="text"
@@ -137,11 +140,13 @@ exports[`NewDataSourceRow check add press 1`] = `
           />
           <div
             class="invalid-feedback"
-          />
+          >
+            0
+          </div>
         </div>
       </div>
       <div
-        class="col-md-3"
+        class="col-md-5"
       >
         <div
           class="form-group"
@@ -199,16 +204,17 @@ exports[`NewDataSourceRow check add press 1`] = `
           />
         </div>
       </div>
-      <div
-        class="col-md-3"
+    </div>
+    <br />
+    <div
+      class="col-md-2"
+    >
+      <button
+        class="oi-add-button btn btn-primary btn-sm"
+        type="button"
       >
-        <button
-          class="oi-add-button btn btn-primary btn-sm"
-          type="button"
-        >
-          Add
-        </button>
-      </div>
+        Add
+      </button>
     </div>
   </form>
 </div>
@@ -223,7 +229,7 @@ exports[`NewDataSourceRow check add pressed with empty dataSource name 1`] = `
       class="row"
     >
       <div
-        class="col-md-5"
+        class="col-md-7"
       >
         <div
           class="form-group"
@@ -235,8 +241,8 @@ exports[`NewDataSourceRow check add pressed with empty dataSource name 1`] = `
             New DataSource Name
           </label>
           <input
-            aria-invalid="false"
-            class="oi-form-input form-control"
+            aria-invalid="true"
+            class="oi-form-input is-invalid form-control"
             id="name"
             name="name"
             type="text"
@@ -244,11 +250,13 @@ exports[`NewDataSourceRow check add pressed with empty dataSource name 1`] = `
           />
           <div
             class="invalid-feedback"
-          />
+          >
+            1
+          </div>
         </div>
       </div>
       <div
-        class="col-md-3"
+        class="col-md-5"
       >
         <div
           class="form-group"
@@ -306,16 +314,17 @@ exports[`NewDataSourceRow check add pressed with empty dataSource name 1`] = `
           />
         </div>
       </div>
-      <div
-        class="col-md-3"
+    </div>
+    <br />
+    <div
+      class="col-md-2"
+    >
+      <button
+        class="oi-add-button btn btn-primary btn-sm"
+        type="button"
       >
-        <button
-          class="oi-add-button btn btn-primary btn-sm"
-          type="button"
-        >
-          Add
-        </button>
-      </div>
+        Add
+      </button>
     </div>
   </form>
 </div>
@@ -330,7 +339,7 @@ exports[`NewDataSourceRow check change dataSource name 1`] = `
       class="row"
     >
       <div
-        class="col-md-5"
+        class="col-md-7"
       >
         <div
           class="form-group"
@@ -342,8 +351,8 @@ exports[`NewDataSourceRow check change dataSource name 1`] = `
             New DataSource Name
           </label>
           <input
-            aria-invalid="false"
-            class="oi-form-input form-control"
+            aria-invalid="true"
+            class="oi-form-input is-invalid form-control"
             id="name"
             name="name"
             type="text"
@@ -351,11 +360,13 @@ exports[`NewDataSourceRow check change dataSource name 1`] = `
           />
           <div
             class="invalid-feedback"
-          />
+          >
+            1
+          </div>
         </div>
       </div>
       <div
-        class="col-md-3"
+        class="col-md-5"
       >
         <div
           class="form-group"
@@ -413,16 +424,17 @@ exports[`NewDataSourceRow check change dataSource name 1`] = `
           />
         </div>
       </div>
-      <div
-        class="col-md-3"
+    </div>
+    <br />
+    <div
+      class="col-md-2"
+    >
+      <button
+        class="oi-add-button btn btn-primary btn-sm"
+        type="button"
       >
-        <button
-          class="oi-add-button btn btn-primary btn-sm"
-          type="button"
-        >
-          Add
-        </button>
-      </div>
+        Add
+      </button>
     </div>
   </form>
 </div>
@@ -437,7 +449,7 @@ exports[`NewDataSourceRow check change protocol 1`] = `
       class="row"
     >
       <div
-        class="col-md-5"
+        class="col-md-7"
       >
         <div
           class="form-group"
@@ -449,8 +461,8 @@ exports[`NewDataSourceRow check change protocol 1`] = `
             New DataSource Name
           </label>
           <input
-            aria-invalid="false"
-            class="oi-form-input form-control"
+            aria-invalid="true"
+            class="oi-form-input is-invalid form-control"
             id="name"
             name="name"
             type="text"
@@ -458,11 +470,13 @@ exports[`NewDataSourceRow check change protocol 1`] = `
           />
           <div
             class="invalid-feedback"
-          />
+          >
+            1
+          </div>
         </div>
       </div>
       <div
-        class="col-md-3"
+        class="col-md-5"
       >
         <div
           class="form-group"
@@ -520,16 +534,17 @@ exports[`NewDataSourceRow check change protocol 1`] = `
           />
         </div>
       </div>
-      <div
-        class="col-md-3"
+    </div>
+    <br />
+    <div
+      class="col-md-2"
+    >
+      <button
+        class="oi-add-button btn btn-primary btn-sm"
+        type="button"
       >
-        <button
-          class="oi-add-button btn btn-primary btn-sm"
-          type="button"
-        >
-          Add
-        </button>
-      </div>
+        Add
+      </button>
     </div>
   </form>
 </div>
