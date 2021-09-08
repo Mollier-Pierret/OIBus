@@ -27,12 +27,6 @@ class FolderScanner extends ProtocolHandler {
     this.compression = compression
 
     this.handlesFiles = true
-
-    this.statusData = {
-      lastOnScanAt : 0,
-      lastAddFileAt: 0,
-      addFileCount : 0, 
-    }
   }
 
   /**
@@ -70,8 +64,6 @@ class FolderScanner extends ProtocolHandler {
               this.logger.error(`Error sending the file ${file}: ${sendFileError.message}`)
             }
           }
-          this.statusData.lastOnScanAt = new Date().toISOString()
-          this.engine.eventEmitters[`/south/${this.dataSource.dataSourceId}/sse`].events.emit('data', this.statusData)
         }
       } else {
         this.logger.debug(`The folder ${this.inputFolder} is empty.`)
@@ -135,9 +127,6 @@ class FolderScanner extends ProtocolHandler {
     } else {
       await this.addFile(filePath, this.preserveFiles)
     }
-    this.statusData.lastAddFileAt = new Date().toISOString()
-    this.statusData.addFileCount += 1
-    this.engine.eventEmitters[`/south/${this.dataSource.dataSourceId}/sse`].events.emit('data', this.statusData)
 
     if (this.preserveFiles) {
       const stats = fs.statSync(path.join(this.inputFolder, filename))

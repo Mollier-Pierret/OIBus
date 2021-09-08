@@ -59,13 +59,6 @@ class MQTT extends ProtocolHandler {
     this.timeStampPath = timestampPath
     this.timeStampFormat = timeStampFormat
     this.handlesPoints = true
-
-    this.statusData = {
-      protocol: 'MQTT',
-      numberOfValues: 0,
-      lastAddPointsAt: 0,
-
-    }
   }
 
   /**
@@ -73,8 +66,10 @@ class MQTT extends ProtocolHandler {
    * @return {void}
    */
   async connect() {
+    this.statusData['Connected at'] = 'Not connected'
+    this.statusData['Last scan at'] = 'Subscription'
+    this.updateStatusDataStream()
     await super.connect()
-
     this.logger.info(`Connecting to ${this.url}...`)
     const options = {
       username: this.username,
@@ -97,6 +92,8 @@ class MQTT extends ProtocolHandler {
    */
   handleConnectError(error) {
     this.logger.error(error)
+    this.statusData['Connected at'] = 'Not connected'
+    this.updateStatusDataStream()
   }
 
   /**
@@ -109,6 +106,9 @@ class MQTT extends ProtocolHandler {
       this.client.subscribe(point.topic, { qos: this.qos }, this.subscribeCallback.bind(this, point))
     })
 
+    this.statusData['Last scan at'] = 'Subscription'
+    this.statusData['Connected at'] = new Date().toISOString()
+    this.updateStatusDataStream()
     this.client.on('message', this.handleMessageEvent.bind(this))
   }
 
@@ -152,7 +152,7 @@ class MQTT extends ProtocolHandler {
         },
       }
     }
-    this.logger.error(`PointId cant be determined. The followingvalue ${JSON.stringify(data)} is not saved. Configuration needs to be changed`)
+    this.logger.error(`PointId cant be determined. The following value ${JSON.stringify(data)} is not saved. Configuration needs to be changed`)
     return null
   }
 
@@ -169,9 +169,6 @@ class MQTT extends ProtocolHandler {
           this.logger.error(`Could not find the dataArrayPath ${JSON.stringify(this.dataArrayPath)} in message ${JSON.stringify(parsedMessage)}`)
         }
       } else { // if the message contains only one value as a json
-        this.statusData.numberOfValues += 1
-        this.statusData.lastAddPointsAt = new Date().toISOString()
-        this.engine.eventEmitters[`/south/${this.dataSource.dataSourceId}/sse`].events.emit('data', this.statusData)
         this.addValues([this.formatValue(parsedMessage, topic)])
       }
     } catch (error) {
@@ -184,7 +181,9 @@ class MQTT extends ProtocolHandler {
    * @return {void}
    */
   disconnect() {
-    this.client.end(true)
+    if (this.client) {
+      this.client.end(true)
+    }
     super.disconnect()
   }
 

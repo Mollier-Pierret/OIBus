@@ -57,14 +57,14 @@ class ApiHandler {
    * @return {void}
    */
   connect() {
-    const { name, api } = this.application
+    const { name, api, id } = this.application
     this.logger.info(`North API ${name} started with protocol ${api}`)
 
-    if (!this.engine.eventEmitters[`/north/${applicationId}/sse`]) {
-      this.engine.eventEmitters[`/north/${applicationId}/sse`] = {}
-      this.engine.eventEmitters[`/north/${applicationId}/sse`].events = new EventEmitter()
-      this.engine.eventEmitters[`/north/${applicationId}/sse`].events.setMaxListeners(0)
-      this.engine.eventEmitters[`/north/${applicationId}/sse`].events.on('data', this.listener)
+    if (!this.engine.eventEmitters[`/north/${id}/sse`]) {
+      this.engine.eventEmitters[`/north/${id}/sse`] = {}
+      this.engine.eventEmitters[`/north/${id}/sse`].events = new EventEmitter()
+      this.engine.eventEmitters[`/north/${id}/sse`].events.setMaxListeners(0)
+      this.engine.eventEmitters[`/north/${id}/sse`].events.on('data', this.listener)
     }
   }
 
@@ -74,15 +74,14 @@ class ApiHandler {
    * @return {void}
    */
   disconnect() {
-    const { name } = this.application
+    const { name, id } = this.application
     this.logger.info(`North API ${name} disconnected`)
-    this.engine.eventEmitters[`/north/${applicationId}/sse`].events.off('data', this.listener)
+    this.engine.eventEmitters[`/north/${id}/sse`].events.off('data', this.listener)
   }
 
   listener = (data) => {
     if (data) this.sseData = data
-    console.log(`/north/${this.application.dataSourceId}/sse data:`, this.sseData)
-    this.engine.eventEmitters[`/north/${this.application.applicationId}/sse`].stream?.write(`data: ${JSON.stringify(this.sseData)}\n\n`)
+    this.engine.eventEmitters[`/north/${this.application.id}/sse`].stream?.write(`data: ${JSON.stringify(this.sseData)}\n\n`)
   }
 
   /**

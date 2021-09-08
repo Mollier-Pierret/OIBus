@@ -38,7 +38,6 @@ class Server {
         return await next()
       }
 
-      console.log(ctx.path)
       ctx.request.socket.setTimeout(0)
       ctx.req.socket.setNoDelay(true)
       ctx.req.socket.setKeepAlive(true)
