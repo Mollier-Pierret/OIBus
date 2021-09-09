@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { act } from 'react-dom/test-utils'
+import { act, Simulate } from 'react-dom/test-utils'
 
 // need BrowserRouter so Link component is not complaining
 import { BrowserRouter } from 'react-router-dom'
@@ -39,6 +39,19 @@ describe('NewNorth', () => {
         container,
       )
     })
+    expect(container).toMatchSnapshot()
+  })
+
+  // TODO: improve this test to check handleAddApplication
+  test('check add pressed with "new_application" id', () => {
+    act(() => {
+      ReactDOM.render(
+        <NewNorth />, container,
+      )
+    })
+    Simulate.click(document.getElementById('add-north'))
+    // Simulate.change(document.getElementById('name'), { target: { value: 'new_application' } })
+    // Simulate.click(document.getElementById('icon-add'))
     expect(container).toMatchSnapshot()
   })
 })

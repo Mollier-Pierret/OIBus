@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 import { FaEllipsisV, FaTrashAlt, FaPencilAlt, FaCopy, FaCog, FaSpinner } from 'react-icons/fa'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import { Modal, Button } from 'react-bootstrap'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 import { ConfigContext } from '../context/configContext.jsx'
 
 const SouthSettings = ({ dataSource, renamingConnector }) => {
@@ -43,19 +43,20 @@ const SouthSettings = ({ dataSource, renamingConnector }) => {
 
   return (
     <>
-      <div className="icon-settings-north">
+      <div className="icon-menu">
         <Dropdown
           isOpen={dropdownOpen}
           toggle={toggle}
           direction="up"
         >
           <DropdownToggle size="sm" className="icon-dropdown">
-            <FaEllipsisV className="icon-dropdown-ellipsis" />
+            <FaEllipsisV id="dropdown-toggle" className="icon-dropdown-ellipsis" />
           </DropdownToggle>
 
           <DropdownMenu>
             <DropdownItem className="icon-dropdown-item">
               <div
+                id="icon-rename"
                 role="button"
                 aria-hidden="true"
                 onClick={() => {
@@ -65,11 +66,11 @@ const SouthSettings = ({ dataSource, renamingConnector }) => {
                 <FaPencilAlt className="icon-dropdown-item" />
                 Rename
               </div>
-
             </DropdownItem>
 
             <DropdownItem className="icon-dropdown-item">
               <div
+                id="icon-settings"
                 aria-hidden="true"
                 role="button"
                 onClick={() => {
@@ -83,6 +84,7 @@ const SouthSettings = ({ dataSource, renamingConnector }) => {
 
             <DropdownItem className="icon-dropdown-item">
               <div
+                id="icon-duplicate"
                 aria-hidden="true"
                 role="button"
                 onClick={() => {
@@ -90,12 +92,13 @@ const SouthSettings = ({ dataSource, renamingConnector }) => {
                 }}
               >
                 <FaCopy className="icon-dropdown-item" />
-                Copy
+                Duplicate
               </div>
             </DropdownItem>
 
             <DropdownItem className="icon-dropdown-item">
               <div
+                id="icon-status"
                 aria-hidden="true"
                 role="button"
                 onClick={() => {
@@ -108,9 +111,10 @@ const SouthSettings = ({ dataSource, renamingConnector }) => {
             </DropdownItem>
 
             <DropdownItem className="icon-dropdown-item" onClick={handleShow}>
-              <FaTrashAlt className="icon-dropdown-item" />
+              <FaTrashAlt id="icon-delete" className="icon-dropdown-item" />
               Delete
             </DropdownItem>
+
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
                 Delete
@@ -118,6 +122,7 @@ const SouthSettings = ({ dataSource, renamingConnector }) => {
               <Modal.Body>{`Are you sure you want to delete ${dataSource.name}?`}</Modal.Body>
               <Modal.Footer>
                 <Button
+                  id="icon-confirm"
                   variant="secondary"
                   onClick={() => handleDeleteConnector(`south.dataSources.${dataSources.findIndex(
                     (element) => element.id === dataSource.id,

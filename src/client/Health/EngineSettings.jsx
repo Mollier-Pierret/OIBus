@@ -5,7 +5,7 @@ import { RiShutDownFill } from 'react-icons/ri'
 
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import { Modal, Button } from 'react-bootstrap'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 
 const EngineSettings = ({ onRestart, onShutdown }) => {
   const [restartShow, setRestartShow] = useState(false)
@@ -27,14 +27,14 @@ const EngineSettings = ({ onRestart, onShutdown }) => {
 
   return (
     <>
-      <div className="icon-settings-north">
+      <div className="icon-menu">
         <Dropdown
           isOpen={dropdownOpen}
           toggle={toggle}
           direction="left"
         >
           <DropdownToggle size="sm" className="icon-dropdown">
-            <FaEllipsisV className="icon-dropdown-ellipsis" />
+            <FaEllipsisV id="dropdown-toggle" className="icon-dropdown-ellipsis" />
           </DropdownToggle>
 
           <DropdownMenu>
@@ -84,6 +84,7 @@ const EngineSettings = ({ onRestart, onShutdown }) => {
 
             <DropdownItem className="icon-dropdown-item">
               <div
+                id="icon-settings"
                 aria-hidden="true"
                 role="button"
                 onClick={() => {
@@ -102,12 +103,8 @@ const EngineSettings = ({ onRestart, onShutdown }) => {
 }
 
 EngineSettings.propTypes = {
-  onRestart: PropTypes.func,
-  onShutdown: PropTypes.func,
-}
-EngineSettings.defaultProps = {
-  onRestart: () => null,
-  onShutdown: () => null,
+  onRestart: PropTypes.func.isRequired,
+  onShutdown: PropTypes.func.isRequired,
 }
 
 export default EngineSettings

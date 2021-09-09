@@ -3,18 +3,28 @@
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { act } from 'react-dom/test-utils'
-
-// need BrowserRouter so Link component is not complaining
-import { BrowserRouter } from 'react-router-dom'
-
+import * as nanoid from 'nanoid'
+import { act, Simulate } from 'react-dom/test-utils'
 import NorthSettings from './NorthSettings.jsx'
+import newConfig from '../../../tests/testConfig'
 
-import activeConfig from '../../../tests/testConfig'
+// mocking the nanoid method
+jest.mock('nanoid')
+jest.spyOn(nanoid, 'nanoid').mockReturnValue('generated-uuid')
 
 // ReacFlow does not seem to be working with jest.
 // so we have to mock this component
 jest.mock('../../../node_modules/react-flow-renderer/dist/ReactFlow.js', () => () => ('ReactFlow'))
+
+const dispatchNewConfig = jest.fn((link) => link)
+
+const mockHistoryPush = jest.fn()
+
+jest.mock('react-router-dom', () => (
+  { useHistory: () => ({ push: mockHistoryPush }) }
+))
+
+const application = newConfig.north.applications[0]
 
 let container
 
@@ -28,21 +38,76 @@ afterEach(() => {
   container = null
 })
 
-// sample status (object returned by Server to give various informations on the behavior)
+React.useContext = jest.fn().mockReturnValue({ newConfig, dispatchNewConfig })
 
-React.useContext = jest.fn().mockReturnValue({ activeConfig })
-activeConfig.north.applications.forEach((application) => {
-  describe('NorthSettings', () => {
-    test('display NorthSettings page based on config', async () => {
-      act(() => {
-        ReactDOM.render(
-          <BrowserRouter>
-            <NorthSettings application={application} index={0} renamingConnector={() => 1} />
-          </BrowserRouter>,
-          container,
-        )
-      })
-      expect(container).toMatchSnapshot()
+describe('NorthSettings', () => {
+  test('display NorthSettings page based on config', async () => {
+    act(() => {
+      ReactDOM.render(
+        <NorthSettings application={application} renamingConnector={() => 1} />,
+        container,
+      )
     })
+    expect(container).toMatchSnapshot()
+  })
+
+  test('check duplicate first application', () => {
+    act(() => {
+      ReactDOM.render(
+        <NorthSettings application={application} renamingConnector={() => 1} />, container,
+      )
+    })
+    Simulate.click(document.getElementById('dropdown-toggle'))
+    Simulate.click(document.getElementById('icon-duplicate'))
+    expect(dispatchNewConfig).toBeCalledWith({
+      type: 'addRow',
+      name: 'north.applications',
+      value: {
+        ...application,
+        name: 'c copy',
+        enabled: false,
+        id: 'generated-uuid',
+      },
+    })
+    expect(container).toMatchSnapshot()
+  })
+
+  test('check edit first application', () => {
+    act(() => {
+      ReactDOM.render(
+        <NorthSettings application={application} renamingConnector={() => 1} />, container,
+      )
+    })
+    Simulate.click(document.getElementById('dropdown-toggle'))
+    Simulate.click(document.getElementById('icon-settings'))
+    expect(mockHistoryPush).toBeCalledWith({ pathname: `/north/${newConfig.north.applications[0].id}` })
+    expect(container).toMatchSnapshot()
+  })
+
+  test('check delete first application', () => {
+    act(() => {
+      ReactDOM.render(
+        <NorthSettings application={application} renamingConnector={() => 1} />, container,
+      )
+    })
+    Simulate.click(document.getElementById('dropdown-toggle'))
+    Simulate.click(document.getElementById('icon-delete'))
+    Simulate.click(document.getElementById('icon-confirm'))
+    expect(dispatchNewConfig).toBeCalledWith({
+      type: 'deleteRow',
+      name: 'north.applications.0',
+    })
+    expect(container).toMatchSnapshot()
+  })
+
+  test('check rename first dataSource', () => {
+    act(() => {
+      ReactDOM.render(
+        <NorthSettings application={application} renamingConnector={() => 1} />, container,
+      )
+    })
+    Simulate.click(document.getElementById('dropdown-toggle'))
+    Simulate.click(document.getElementById('icon-rename'))
+    expect(container).toMatchSnapshot()
   })
 })

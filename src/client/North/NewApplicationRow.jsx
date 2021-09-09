@@ -48,7 +48,7 @@ const NewApplicationRow = ({ applicationList, apiList, addApplication, valid }) 
       </Row>
       <br />
       <Col md="2">
-        <Button size="sm" className="oi-add-button" color="primary" onClick={() => handleAddApplication()}>
+        <Button size="sm" id="icon-add" className="oi-add-button" color="primary" onClick={() => handleAddApplication()}>
           Add
         </Button>
       </Col>
